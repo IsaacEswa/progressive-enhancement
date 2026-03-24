@@ -9,7 +9,6 @@
 		rel="stylesheet">
 	<link href="assets/styles.css" rel="stylesheet">
 	<style>
-		/* Schrijf hier gewoon je CSS voor dit component */
 		.single-faq {
 			margin-top: 1em;
 			border: 1px solid black;
@@ -23,6 +22,11 @@
 				border-radius: 20px;
 				width: fit-content;
 
+			}
+
+			summary:focus-visible {
+				outline: 3px solid var(--blue);
+				outline-offset: 3px;
 			}
 
 			&[open] {
@@ -52,11 +56,37 @@
 			&:nth-of-type(3) p {
 				background-color: #fffc86;
 			}
+
+			/* Plus icon */
+			summary::before {
+				content: url("assets/plus-solid.svg");
+				margin-right: 1em;
+				display: inline-block;
+				vertical-align: middle;
+
+				transform-origin: center;
+				transition: 0.2s ease-out;
+				transform-origin: center;
+
+			}
+
+			&[open] summary::before {
+				transform: rotate(45deg);
+			}
+
+			summary::-webkit-details-marker {
+				/* Hides marker on Safari */
+				display: none;
+			}
+
+			summary {
+				outline: none;
+				/* Hides marker on Chrome */
+				list-style: none;
+			}
+
+
 		}
-
-		/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
-
-		/* Hint: Denk aan de states van het component; deze kan open en dicht zijn */
 	</style>
 </head>
 
