@@ -32,6 +32,14 @@
 			top: 4px;
 			left: 4px;
 			transition: .3s;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			@media (prefers-reduced-motion: reduce) {
+				transition: none;
+			}
 		}
 
 		.switch-control:checked {
@@ -42,7 +50,11 @@
 			transform: translateX(40px);
 			content: "aan";
 			font-weight: bold;
+		}
 
+		.switch:focus-visible {
+			outline: 3px solid var(--blue);
+			outline-offset: 3px;
 		}
 
 		/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
