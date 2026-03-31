@@ -10,6 +10,40 @@
 	<link href="assets/styles.css" rel="stylesheet">
 	<style>
 		/* Schrijf hier gewoon je CSS voor dit component */
+		.switch-control {
+			/* styling uitzetten */
+			appearance: none;
+
+			width: 80px;
+			height: 40px;
+			background: grey;
+			border-radius: 20px;
+			position: relative;
+			cursor: pointer;
+		}
+
+		.switch-control::before {
+			content: "";
+			position: absolute;
+			width: 32px;
+			height: 32px;
+			background: white;
+			border-radius: 50%;
+			top: 4px;
+			left: 4px;
+			transition: .3s;
+		}
+
+		.switch-control:checked {
+			background: var(--green);
+		}
+
+		.switch-control:checked::before {
+			transform: translateX(40px);
+			content: "aan";
+			font-weight: bold;
+
+		}
 
 		/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
 
@@ -25,8 +59,7 @@
 
 	<form>
 		<label class="switch">
-			<input type="checkbox" switch>
-			<!-- <span class="slider round"></span> -->
+			<input type="checkbox" class="switch-control">
 		</label>
 	</form>
 
