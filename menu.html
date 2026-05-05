@@ -10,6 +10,70 @@
 	<link href="assets/styles.css" rel="stylesheet">
 	<style>
 		/* Schrijf hier gewoon je CSS voor dit component */
+		body {
+			margin: 0;
+
+		}
+
+		nav:target {
+			/* Als JS niet werkt gebruikt het gewoon deze CSS */
+			transform: translateX(0);
+		}
+
+		.menu-open {
+			transform: translateX(0);
+		}
+
+		main {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.fdnd-button {
+			width: max-content;
+		}
+
+		nav {
+			background-color: var(--green);
+			/* width: max-content; */
+			height: 100dvh;
+			z-index: 99;
+			position: absolute;
+
+			transform: translateX(-100%);
+			transition: .3s ease;
+
+			.closemenu-btn {
+				padding: 1em;
+				display: flex;
+				justify-content: flex-end;
+			}
+
+			ul {
+				padding: 0;
+				margin: 0;
+
+				li {
+					list-style: none;
+					padding: 1em;
+
+					a {
+						text-decoration: none;
+						color: var(--blue);
+						font-weight: bold;
+					}
+
+					&:hover {
+						background-color: var(--blue);
+
+						a {
+							color: var(--green);
+						}
+					}
+				}
+			}
+		}
+
 
 		/* Hint: kijk eens naar :target
 			   https://developer.mozilla.org/en-US/docs/Web/CSS/:target */
@@ -18,14 +82,30 @@
 		/* Schrijf hier eventueel je client-side JavaScript */
 
 		/* Hint: dit component kan volledig met CSS, maar met JS kun je 'm enhancen */
+
+		// stap 1: selecteer buttons
+		const openMenuBtn = document.querySelector('.fdnd-button')
+		const closeMenuBtn = document.querySelector('.closemenu-btn')
+		const mobileMenu = document.querySelector('#nav')
+
+		//stap 2: Wacht tot er op geklikt wordt
+		//stap 3: voeg of verwijder class
+		openMenuBtn.addEventListener('click', function (event) {
+			event.preventDefault()
+			mobileMenu.classList.add('menu-open')
+		})
+		closeMenuBtn.addEventListener('click', function (event) {
+			event.preventDefault()
+			mobileMenu.classList.remove('menu-open')
+		})
+
 	</script>
 </head>
 
 <body>
 	<main>
 		<h1>Mobiel menu</h1>
-		<a href="#mobilemenu" class="openmenu-btn">Menu</a>
-
+		<a href="#nav" class="fdnd-button">Menu</a>
 		<!-- Dit is het menu -->
 		<nav id="nav">
 			<a href="#" class="closemenu-btn">
@@ -50,11 +130,14 @@
 			</ul>
 		</nav>
 
-
 		<!-- Hint: Wat heb je nodig, als je op een klein scherm naar het menu wilt? -->
 
-
-		<!-- Deze tekst kun je gebruiken, zodat de pagina wat langer wordt -->
+		<!-- <details open>
+				<summary>Demo video</summary>
+				<video src="assets/menu.mp4" width="773" height="863" controls muted autoplay loop>
+					<a href="assets/menu.mp4">assets/menu.mp4</a>
+				</video>
+			</details> -->
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum eget elit eu tincidunt. Donec
 			gravida nulla at justo sollicitudin, hendrerit faucibus diam tincidunt. Pellentesque porta neque quis nunc
 			laoreet congue. Sed porttitor nec tellus nec semper. Cras pharetra dictum risus ut sagittis. Aliquam in
@@ -143,6 +226,7 @@
 			quis, lobortis tempor tortor. Vivamus semper, ex convallis iaculis suscipit, risus augue bibendum sapien,
 			nec volutpat lacus quam finibus arcu. Nunc non consectetur eros, eu viverra metus. Aliquam nisl risus,
 			condimentum et sapien id, rutrum interdum odio. Nulla facilisi. Ut ac egestas quam.</p>
+
 
 		<details open>
 			<summary>Demo video</summary>
